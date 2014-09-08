@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://square.github.io/cubism/ -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+      Cubism.js
+    </title>
+    <style>
+      
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+      @import url(style.css);
+      
+      #example1 {
+        min-height: 155px;
+      }
+      #example2a {
+        min-height: 153px;
+      }
+      #example2b {
+        min-height: 255px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="body">
+      <a href="https://github.com/square">
+        <img src="./Cubism.js_files/square.png" id="logo">
+      </a>
+      
+      <h1>
+        Cubism.js
+      </h1>
+      
+      <h2>
+        Time Series Visualization
+      </h2>
+      
+      <div id="example1">
+      </div>
+      
+      <p>
+      </p>
+      <aside>
+        Mouseover or use the arrow keys to inspect values.
+        <br>
+        <a href="http://square.github.io/cubism/demo/" target="_blank">
+          Open in a new window.
+        </a>
+      </aside>
+      
+      <p style="margin-top:3em;">
+        <b>Cubism.js</b> is a plugin for visualizing time series. Use Cubism to construct better realtime dashboards, pulling data from 
+      </p>
+      <h2>
+        Scalable
+      </h2>
+      
+      <p>
+        Cubism fetches time series data incrementally: after the initial display, Cubism reduces server load by polling only the most recent values. Cubism renders incrementally, too, using 
+        <a href="http://www.w3.org/TR/2dcontext/">
+          Canvas
+        </a>
+        to shift charts one pixel to the left. This approach lets Cubism scale easily to hundreds of metrics updating every ten seconds! Despite asynchronous fetching, rendering is synchronized so that charts update simultaneously, further improving performance and readability.
+        
+      </p>
+      <h2>
+        Effective
+      </h2>
+      
+      <p>
+        Cubism also scales in terms of perception: small multiples aligned by time facilitate rapid comparison. Cubism’s horizon charts make better use of vertical space than standard area charts, allowing you to see many more metrics at-a-glance and increasing the likelihood of discovery. If you compress a 120-pixel tall area chart to 30 pixels, you lose 75% of the resolution and it becomes harder to see small changes:
+        
+      </p>
+      <div id="example2a">
+          <canvas width="960" height="30">
+          </canvas>
+          <span class="title">
+            Area (30px)
+          </span>
+          <span class="value" style="right: 611px;">
+            −4.0
+          </span>
+        </div>
+      </div>
+      
+      <p>
+        <h2>In contrast</h2> <a href="http://vis.berkeley.edu/papers/horizon/"> horizon charts </a>reduce vertical space 
+          without losing resolution. Larger values are overplotted in successively darker colors, while negative values are offset to descend from the top. As you increase the number of colors, you reduce the required vertical space:       
+      </p>
+      <div id="example2b">
+          <canvas width="960" height="30">
+          </canvas>
+          <span class="title">
+            Horizon, 4-band (30px)
+          </span>
+          <span class="value" style="right: 611px;">
+            −4.0
+          </span>
+        </div>
+      </div>
+      
+      <p>
+        By combining position and color, horizon charts 
+        <a href="http://www.perceptualedge.com/articles/visual_business_intelligence/time_on_the_horizon.pdf">
+          improve perception
+        </a>
+        : position is highly effective at discriminating small changes, while color differentiates large changes. To further increase data density, Cubism favors per-pixel metrics where each pixel encodes a distinct point in time. Cubism also includes thoughtful default colors by Cynthia Brewer
+
+        .
+        
+      </p>
+      <h2>
+        Flexible
+      </h2>
+      
+      <p>
+        Cubism is data-source agnostic. It has built-in support for Graphite and Cube, and can be readily extended to fetch data from other sources. Client-side metric arithmetic       
+        allows further flexibility by combining metrics from multiple sources. Cubism’s modular components are designed for extensibility. You can add new chart types and modes of interaction, too. Cubism builds on D3, making it highly customizable via CSS and JavaScript.
+        
+      </p>
+       </p>
+      <footer>
+        <span style="float:right;">
+          Released under the 
+          <a href="http://www.apache.org/licenses/LICENSE-2.0.html">
+            Apache License 2.0
+          </a>
+          .
+        </span>
+        Copyright 2012 
+        <a href="http://squareup.com/">
+          Square, Inc.
+        </a>
+      </footer>
+    </div>
+    
+    <a href="https://github.com/square/cubism">
+      <img id="fork" src="./Cubism.js_files/github.png">
+    </a>
+    
+    <!script src="./Cubism.js_files/d3.v2.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="j/lib/jquery.min.js"></script>
+		<script src="j/lib/moment-2.1.0.min.js"></script>
+    <script src="./Cubism.js_files/cubism.v1.js"></script>
+    <script src="./Cubism.js_files/highlight.min.js"></script>
+    <script src="demo.js"></script>
+  </body>
+</html>

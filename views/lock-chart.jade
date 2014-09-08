@@ -1,0 +1,45 @@
+//Created by John on 4/08/2014.
+doctype html
+html
+  head
+    title= title
+    //link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/chart.css')
+    script(src='/javascripts/jquery-2.1.1.js')
+    script(src='/javascripts/jquery-ui.min.js')
+  body
+    block content
+      #doughnutChart.chart
+        h1 show Doughnut Chart
+      script(src='/javascripts/drawDoughnutChart.js')
+      script(src='/javascripts/showDoughnutChart.js')
+      // write data out as multiple js calls
+      each lock in locks
+        script(type='text/javascript').
+          dough.doughnutChart( "addData", { title: '#{lock.name}', value : 100,
+                  state: '#{lock.state}', color: "#F7E248" } ) ;
+      script(type='text/javascript').
+        dough.doughnutChart( "update" ) ;
+      //
+                td= lock._id
+                td= lock.name
+                td= lock.address
+                td= lock.state
+    #div_a(style='width: 500px; height: 100px; margin: 0 0 20px 0; border: solid 1px #999;')
+    table.table.table-striped.table-bordered
+      tr
+        th Time
+        th RSSI
+        th Name
+        th Lock State
+        th Address
+      tr
+        td(id ="time")= "abc"
+        td(id ="rssi")= "abc"
+        td(id ="name")= "abc"
+        td(id ="lock")= "abc"
+        td(id ="address")= "abc"
+
+
+    script(src='/javascripts/chat.js')
+    script(src='/socket.io/socket.io.js')

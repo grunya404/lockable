@@ -1,0 +1,45 @@
+//   Created by John on 3/08/2014.
+extends layout
+
+block content
+
+  table.table.table-striped.table-bordered
+    tr
+      th(style="width: 200px") ID
+      th(style="width: 200px") Username
+      th Full Name
+      th Options
+    each user in users
+      tr
+        td= user._id
+        td= user.username
+        td= user.name.full
+        td
+          span.glyphicon.glyphicon-remove-circle(data-id="#{user._id}")
+  script(src='/javascripts/users.js')
+
+  #div_a(style='width: 500px; height: 100px; margin: 0 0 20px 0; border: solid 1px #999;')
+    table.table.table-striped.table-bordered
+      tr
+        th Time
+        th RSSI
+        th Name
+        th Lock State
+        th Address
+      tr
+        td(id ="time")= "abc"
+        td(id ="rssi")= "abc"
+        td(id ="name")= "abc"
+        td(id ="lock")= "abc"
+        td(id ="address")= "abc"
+
+  #content(style='width: 500px; height: 400px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;')
+  .controls
+    | Name:
+    input#name(style='width:400px;')
+    br
+    input#field(style='width:400px;')
+    input#send(type='button', value='send')
+
+  script(src='/javascripts/chat.js')
+  script(src='/javascripts/socket.io.js')

@@ -1,0 +1,16 @@
+//
+   Created by John on 4/08/2014.
+extends layout
+block content
+  form(method='POST', action='/createLock')
+    div
+      label(for='name') Lock Name:
+      input(type='text', name='name')
+    div
+      label(for='address') Address:
+      input(type='text', name='address')
+    div
+    label(for='state') State:
+    input(type='text', name='state')
+    div
+      input(type='submit', value="Create!")

@@ -1,0 +1,49 @@
+//
+   Created by John on 4/08/2014.
+
+extends layout
+block content
+  table(id ="id_LockTable").table.table-striped.table-bordered
+    tr
+      th(style="width: 200px") Db _ID
+      th(style="width: 200px") Lock Name
+      th(style="width: 200px") Lock Address
+      th Lock State
+      th RSSI
+      th Delete
+    each lock in locks
+      tr(id =lock._id)
+        td= lock._id
+        td= lock.name
+        td= lock.addr
+        td= lock.lock
+        td= lock.rssi
+        td
+          span.glyphicon.glyphicon-remove-circle(data-id="#{lock._id}")
+  script(src='/javascripts/removeLock.js')
+  script(src='/javascripts/chat.js')
+  script(src='/socket.io/socket.io.js')
+
+  #div_a(style='width: 500px; height: 100px; margin: 0 0 20px 0; border: solid 1px #999;')
+    table.table.table-striped.table-bordered
+      tr
+        th Time
+        th RSSI
+        th Name
+        th Lock State
+        th Address
+      tr
+        td(id ="time")= "abc"
+        td(id ="rssi")= "abc"
+        td(id ="name")= "abc"
+        td(id ="lock")= "abc"
+        td(id ="addr")= "abc"
+//
+    #content(style='width: 500px; height: 400px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;')
+    .controls
+      | Name:
+      input#name(style='width:400px;')
+      br
+      input#field(style='width:400px;')
+      input#send(type='button', value='send')
+

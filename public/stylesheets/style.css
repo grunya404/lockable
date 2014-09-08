@@ -1,0 +1,10 @@
+body {
+  padding: 50px;
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+.glyphicon-remove-circle {
+  cursor: pointer;
+}

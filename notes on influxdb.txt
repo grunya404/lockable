@@ -1,0 +1,49 @@
+http://bost.ocks.org/mike/cubism/intro/#0
+http://www.joecjr.com/2013/04/09/cubism-part-2-get-the-data-into-cube/
+
+f you want to interact with the underlying mongo db run mongo from the command line (with mongod running). Use the show dbs command to see the database cube has created for you (the default is cube_development). Then use the use DB_NAME command to switch to that db (for example use cube_development ). Once in, use show collections to see the collection cube created. If you wanted to say, count the number of records it would look something like db.MY_DB_NAME.count() . See mongo’s documentation for more shell commands, basic NoSQL and so forth.
+
+select value from Series-A where time > now() - 20m  limit 100;
+
+select mean(value) from Series-A
+group by time(1m) where time > now() - 1d
+into Series-A.mean.1m
+
+list continuous queries
+
+select * from sin
+select count(value) from Series-A
+
+drop series
+list  series 
+
+SELECT * FROM Series-A where time > 1408872625831 and time < 1408876225832
+select value from Series-A where time < 1408876225832 limit 100;
+
+sin
+time	sequence_number
+Series-A
+time	sequence_number
+Series-A.mean.1d
+time	sequence_number
+Series-A.mean.1m
+time	sequence_number
+Series-B
+time	sequence_number
+Series-C
+time	sequence_number
+Series-C.mean.1d
+time	sequence_number
+Series-A.mean.1h
+time	sequence_number
+Series-B.mean.1d
+time	sequence_number
+Series-B.mean.1h
+time	sequence_number
+Series-C.mean.1h
+
+
+1408944048322
+1408872625831
+1400497861762723
+1408944528000000000
