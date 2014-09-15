@@ -10,11 +10,20 @@ var seriesData = new ServerDataSimulator();
 
 var influx = require('influx');
 
+/*var host = 'oldmanpeabody-calvinklein-1.c.influxdb.com';
 var username = 'johnnewto';
 var password = 'influxdb21';
 var database = 'lockable';
+*/
 
-var client = influx({host : 'oldmanpeabody-calvinklein-1.c.influxdb.com', username : username, password : password, database : database});
+var host = '54.183.211.177';
+var port = '8086';
+var username = 'root';
+var password = 'root';
+var database = 'test1';
+var series = 'sensor';
+
+var client = influx({host : host, port : port, username : username, password : password, database : database});
 client.setRequestTimeout(20000);
 
 router.post('/endpoint1', function(req, res){
@@ -66,9 +75,17 @@ router.post('/dygraph', function(req, res){
   var endDateTm   = moment(data.req.endDateTm).valueOf();
   var timePerInterval = (endDateTm - startDateTm) / (data.req.numIntervals*1000);
 
-  var query = 'SELECT mean(value) FROM ' + data.req.seriesName + ' where time > '
-      + startDateTm + '000000 and  time < ' + endDateTm + '000000 '
-      + ' group by time('+ timePerInterval +'s) limit 5000;';
+  //var query = 'SELECT mean(value) FROM ' + data.req.seriesName + ' where time > '
+  //    + startDateTm + '000000 and  time < ' + endDateTm + '000000 '
+  //    + ' group by time('+ timePerInterval +'s) limit 5000;';
+
+  var query = 'SELECT mean(' + data.req.seriesName + '), '
+    + 'max(' + data.req.seriesName + '), '
+    + 'min(' + data.req.seriesName + ') '
+    + 'FROM ' + series + ' where time > '
+    + startDateTm + '000000 and  time < ' + endDateTm + '000000 '
+    + ' group by time('+ timePerInterval +'s) limit 5000;';
+
   client.query(query, function(dberr, dbres) {
     if (dberr) throw dberr;
     if (dbres.length > 0) {

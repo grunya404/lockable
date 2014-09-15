@@ -398,8 +398,8 @@
       axes.y = {valueRange: null};
       axes.y2 = {valueRange: null};
     } else {
-      axes.y = {valueRange: [0, 2100], independentTicks: true};
-      axes.y2 = {valueRange: [0, 10000], independentTicks: true};
+      axes.y = {valueRange: [-20, 20], independentTicks: true};
+      axes.y2 = {valueRange: [-20, 20], independentTicks: true};
     }
 
     var series = {

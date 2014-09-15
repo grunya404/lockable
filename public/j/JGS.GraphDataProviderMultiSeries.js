@@ -141,7 +141,7 @@
             type: 'POST',
             data: JSON.stringify({'req': rangeDataLoadReq}),
             contentType: 'application/json',
-            url: 'http://localhost:3000/dygraph',
+            url: 'http://'+window.location.hostname+':3000/dygraph',
             success: $.proxy(self.__onServerDataLoad, self)
           })
         }
@@ -197,7 +197,7 @@
           type: 'POST',
           data: JSON.stringify({'req': detailDataLoadReq}),
           contentType: 'application/json',
-          url: 'http://localhost:3000/dygraph',
+          url: 'http://'+window.location.hostname+':3000/dygraph',
           success: $.proxy(self.__onServerDataLoad, self)
         })
       }
@@ -219,13 +219,16 @@
       if(data.res.dataPoints.length > 0) {
         if(data.res.dataPoints[0].length == 3) {
           for(var i=0; i<data.res.dataPoints.length;i++ ) {
-            dbRes.dataPoints.push({ time: data.res.dataPoints[i][0], avg: data.res.dataPoints[i][2], max: data.res.dataPoints[i][2]+100, min:data.res.dataPoints[i][2]-100 });    
+            dbRes.dataPoints.push({ time: data.res.dataPoints[i][0], avg: data.res.dataPoints[i][2], max: data.res.dataPoints[i][2]+5, min:data.res.dataPoints[i][2]-5 });
           }
         } else if (data.res.dataPoints[0].length == 2) {
          for(var i=0; i<data.res.dataPoints.length;i++ ) {
-            dbRes.dataPoints.push({ time: data.res.dataPoints[i][0], avg: data.res.dataPoints[i][1], max: data.res.dataPoints[i][1]+100, min:data.res.dataPoints[i][1]-100 });    
+            dbRes.dataPoints.push({ time: data.res.dataPoints[i][0], avg: data.res.dataPoints[i][1], max: data.res.dataPoints[i][1]+5, min:data.res.dataPoints[i][1]-5 });
           }
-
+        } else if (data.res.dataPoints[0].length == 4) {
+          for(var i=0; i<data.res.dataPoints.length;i++ ) {
+            dbRes.dataPoints.push({ time: data.res.dataPoints[i][0], avg: data.res.dataPoints[i][1], max: data.res.dataPoints[i][2], min:data.res.dataPoints[i][3] });
+          }
         } // else alert("Data return error in Multiseries.js");
       }
       this._onServerDataLoad(data.req, dbRes);
